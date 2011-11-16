@@ -1,6 +1,6 @@
 1. HOWTO TO INSTALL INTO JBOSS 7
 
-Unpack target/jbpm-as7-module-assemble-module.zip into JBOSS/modules
+Unpack jbpm-5.1.0.Final/contrib/jbpm-as7-module-assemble-module.zip into JBOSS/modules
 
 Edit JBOSS/standalone/configuration/standalone.xml:
 
@@ -18,7 +18,7 @@ with
 
 2. HOW TO USE IN YOUR APPLICATION
 
-- edit contrib/persistence.xml and add it to your project's META-INF/ directory
+- Edit contrib/persistence.xml and add it to your project's META-INF/ directory
 - Add (at least) the following dependencies to your pom.xml
 
 		<dependency>
@@ -74,14 +74,14 @@ with
 			<scope>provided</scope>
 		</dependency>
 
+- Build and deploy into JBoss 7
 
 
-
-3. HOWTO BUILD FROm SCRATCH
+3. HOWTO BUILD FROM SCRATCH
 
 THIS WILL WORK WITH *NIX SYSTEM ONLY!!
 
-(Windows users may take the generated file in the contrib directory)
+(Windows users may use the generated file in the contrib directory)
 
 Step 1: Build patched JPA-relevant modules
 
