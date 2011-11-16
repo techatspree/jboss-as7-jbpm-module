@@ -1,0 +1,22 @@
+<assembly>
+  <id>assemble-module</id>
+  <formats>
+    <format>zip</format>
+  </formats>
+  <includeBaseDirectory>false</includeBaseDirectory>
+
+  <dependencySets>
+    <dependencySet>
+      <outputDirectory>de/akquinet/jbosscc/jbpm/main</outputDirectory>
+      <unpack>false</unpack>
+      <scope>runtime</scope>
+    </dependencySet>
+  </dependencySets>
+
+  <fileSets>
+    <fileSet>
+      <directory>target/generated</directory>
+      <outputDirectory>de/akquinet/jbosscc/jbpm/main</outputDirectory>
+    </fileSet>
+  </fileSets>
+</assembly>
