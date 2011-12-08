@@ -36,5 +36,7 @@
   <modules>
     <module>jbpm-human-task-noPersistenceXml</module>
     <module>jbpm-persistence-jpa2</module>
+    <module>drools-persistence-jpa</module>
   </modules>
+  
 </project>
