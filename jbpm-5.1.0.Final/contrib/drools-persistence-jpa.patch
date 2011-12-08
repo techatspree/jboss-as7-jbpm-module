@@ -1,0 +1,92 @@
+Only in ../../../drools-persistence-jpa: .classpath
+Only in .: .gitignore
+Only in ../../../drools-persistence-jpa: META-INF
+diff -cbBr ./pom.xml ../../../drools-persistence-jpa/pom.xml
+*** ./pom.xml	2011-10-19 00:13:06.000000000 +0200
+--- ../../../drools-persistence-jpa/pom.xml	2011-12-07 16:14:53.000000000 +0100
+***************
+*** 10,15 ****
+--- 10,16 ----
+    </parent>
+  
+    <artifactId>drools-persistence-jpa</artifactId>
++   <version>5.3.0.Final-patch</version>
+  
+    <name>Drools :: Persistence :: JPA</name>
+    <description>JPA implementation for Drools</description>
+***************
+*** 75,80 ****
+--- 76,82 ----
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
++      
+      </dependency>
+      <dependency>
+        <groupId>com.sun.xml.bind</groupId>
+Only in ../../../drools-persistence-jpa: .project
+Only in ../../../drools-persistence-jpa: README.txt
+Only in ../../../drools-persistence-jpa: .settings
+diff -cbBr ./src/main/java/org/drools/persistence/info/SessionInfo.java ../../../drools-persistence-jpa/src/main/java/org/drools/persistence/info/SessionInfo.java
+*** ./src/main/java/org/drools/persistence/info/SessionInfo.java	2011-10-19 00:13:06.000000000 +0200
+--- ../../../drools-persistence-jpa/src/main/java/org/drools/persistence/info/SessionInfo.java	2011-12-07 16:14:53.000000000 +0100
+***************
+*** 13,23 ****
+--- 13,25 ----
+  import javax.persistence.SequenceGenerator;
+  import javax.persistence.Transient;
+  import javax.persistence.Version;
++ import javax.persistence.Table;
+  
+  import org.drools.persistence.SessionMarshallingHelper;
+  
+  @Entity
+  @SequenceGenerator(name="sessionInfoIdSeq", sequenceName="SESSIONINFO_ID_SEQ")
++ @Table(name = "DROOLS_SESSIONINFO")
+  public class SessionInfo {
+      
+      private @Id
+diff -cbBr ./src/main/java/org/drools/persistence/info/WorkItemInfo.java ../../../drools-persistence-jpa/src/main/java/org/drools/persistence/info/WorkItemInfo.java
+*** ./src/main/java/org/drools/persistence/info/WorkItemInfo.java	2011-10-19 00:13:06.000000000 +0200
+--- ../../../drools-persistence-jpa/src/main/java/org/drools/persistence/info/WorkItemInfo.java	2011-12-07 16:14:53.000000000 +0100
+***************
+*** 15,20 ****
+--- 15,21 ----
+  import javax.persistence.SequenceGenerator;
+  import javax.persistence.Transient;
+  import javax.persistence.Version;
++ import javax.persistence.Table;
+  
+  import org.drools.marshalling.impl.InputMarshaller;
+  import org.drools.marshalling.impl.MarshallerReaderContext;
+***************
+*** 25,30 ****
+--- 26,32 ----
+  
+  @Entity
+  @SequenceGenerator(name="workItemInfoIdSeq", sequenceName="WORKITEMINFO_ID_SEQ")
++ @Table(name = "DROOLS_WORKITEMINFO")
+  public class WorkItemInfo  {
+  
+      @Id
+diff -cbBr ./src/main/java/org/drools/persistence/jpa/JpaPersistenceContextManager.java ../../../drools-persistence-jpa/src/main/java/org/drools/persistence/jpa/JpaPersistenceContextManager.java
+*** ./src/main/java/org/drools/persistence/jpa/JpaPersistenceContextManager.java	2011-10-19 00:13:06.000000000 +0200
+--- ../../../drools-persistence-jpa/src/main/java/org/drools/persistence/jpa/JpaPersistenceContextManager.java	2011-12-07 16:14:53.000000000 +0100
+***************
+*** 68,74 ****
+      }
+  
+      public void beginCommandScopedEntityManager() {
+!         EntityManager cmdScopedEntityManager = (EntityManager) env.get( EnvironmentName.CMD_SCOPED_ENTITY_MANAGER );
+          if ( cmdScopedEntityManager == null || 
+             ( this.cmdScopedEntityManager != null && !this.cmdScopedEntityManager.isOpen() )) {
+              internalCmdScopedEntityManager = true;
+--- 68,74 ----
+      }
+  
+      public void beginCommandScopedEntityManager() {
+!         this.cmdScopedEntityManager = (EntityManager) env.get( EnvironmentName.CMD_SCOPED_ENTITY_MANAGER );
+          if ( cmdScopedEntityManager == null || 
+             ( this.cmdScopedEntityManager != null && !this.cmdScopedEntityManager.isOpen() )) {
+              internalCmdScopedEntityManager = true;
+Only in ../../../drools-persistence-jpa: target
