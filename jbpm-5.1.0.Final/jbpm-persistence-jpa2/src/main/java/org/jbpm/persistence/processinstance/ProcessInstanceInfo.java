@@ -63,7 +63,7 @@ public class ProcessInstanceInfo {
 	// private Set<EventType> eventTypes = new HashSet<EventType>();
 
 	@ElementCollection
-	@CollectionTable(name = "JBPM_PROCESSINSTANCE_INFO_EVENTTYPES", joinColumns = @JoinColumn(name = "SOLLZEITEN_ID"))
+	@CollectionTable(name = "JBPM_PROCESSINSTANCE_INFO_EVENTTYPES", joinColumns = @JoinColumn(name = "JBPM_PROCESSINSTANCE_INFO_ID"))
 	private final Set<String> eventTypes = new HashSet<String>();
 
 	@Transient
