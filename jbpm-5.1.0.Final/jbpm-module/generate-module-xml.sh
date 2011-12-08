@@ -35,6 +35,7 @@ cat >> $MODULE_XML << _EOF_
     <module name="javax.persistence.api" />
     <module name="javaee.api" />
     <module name="org.jboss.as.jpa" />
+    <module name="org.slf4j" />
   </dependencies>
 </module>
 _EOF_
