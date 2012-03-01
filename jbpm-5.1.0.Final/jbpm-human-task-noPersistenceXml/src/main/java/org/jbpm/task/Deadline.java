@@ -57,7 +57,7 @@ public class Deadline implements Externalizable {
   @JoinColumn(name = "Deadline_Escalation_Id", nullable = true)
   private List<Escalation> escalations = Collections.emptyList();
 
-  private boolean escalated;
+  private int escalated = 0;
 
   public void writeExternal(final ObjectOutput out) throws IOException {
     out.writeLong(id);
@@ -71,7 +71,7 @@ public class Deadline implements Externalizable {
     CollectionUtils.writeI18NTextList(documentation, out);
     CollectionUtils.writeEscalationList(escalations, out);
 
-    out.writeBoolean(escalated);
+    out.writeInt(escalated);
   }
 
   public void readExternal(final ObjectInput in) throws IOException, ClassNotFoundException {
@@ -83,7 +83,7 @@ public class Deadline implements Externalizable {
     documentation = CollectionUtils.readI18NTextList(in);
     escalations = CollectionUtils.readEscalationList(in);
 
-    escalated = in.readBoolean();
+    escalated = in.readInt();
   }
 
   public long getId() {
@@ -119,11 +119,11 @@ public class Deadline implements Externalizable {
   }
 
   public boolean isEscalated() {
-    return escalated;
+    return escalated > 0;
   }
 
   public void setEscalated(final boolean escalated) {
-    this.escalated = escalated;
+    this.escalated = escalated ? 1 : 0;
   }
 
   @Override
@@ -133,7 +133,7 @@ public class Deadline implements Externalizable {
     result = prime * result + ((date == null) ? 0 : date.hashCode());
     result = prime * result + CollectionUtils.hashCode(documentation);
     result = prime * result + CollectionUtils.hashCode(escalations);
-    result = prime * result + (escalated ? 1231 : 1237);
+    result = prime * result + escalated;
     result = prime * result + (int) (id ^ (id >>> 32));
     return result;
   }
