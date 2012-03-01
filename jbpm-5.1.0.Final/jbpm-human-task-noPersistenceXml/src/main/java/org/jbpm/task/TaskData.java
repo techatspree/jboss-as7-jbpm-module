@@ -471,7 +471,7 @@ public class TaskData implements Externalizable {
   }
 
   public boolean isSkipable() {
-    return skipable > 0 ? true : false;
+    return skipable > 0;
   }
 
   public void setSkipable(final boolean isSkipable) {

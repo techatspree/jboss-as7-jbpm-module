@@ -23,7 +23,7 @@ Require-Bundle: org.drools.core;bundle-version="5.3.0.Final", org.droo
 Bundle-Vendor: JBoss by Red Hat
 DynamicImport-Package: *
 Bundle-Version: 5.3.0.Final-patch
-Bnd-LastModified: 1330437803827
+Bnd-LastModified: 1330599003067
 Bundle-ManifestVersion: 2
 Bundle-Description: JPA implementation for Drools
 Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
